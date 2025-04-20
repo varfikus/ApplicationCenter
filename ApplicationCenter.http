@@ -1,0 +1,12 @@
+@ApplicationCenter_HostAddress = http://localhost:5085
+
+POST {{ApplicationCenter_HostAddress}}/api/authorization
+Content-Type: application/json
+Accept: application/json
+
+{
+  "login": "admin",
+  "password": "admin123"
+}
+
+###

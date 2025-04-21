@@ -8,18 +8,17 @@
           <p align="center">Это текстовый документ формата .XML, подписанный квалифицированной электронной подписью.</p>
         </b>
         <referencedataorg>
-          <nameru>Иван</nameru>
-          <userid>e54931ae-065a-415d-910d-c08d711b620d</userid>
-          <emailaddress>ivanov@gmail.com</emailaddress>
-          <phonenumber>12345678</phonenumber>
-          <servicetype>услуга</servicetype>
-          <description>123</description>
+          <nameru>Петр Петров</nameru>
+          <userid>ce14ee1a-35b5-4645-8d61-a6840bd0a7f3</userid>
+          <emailaddress>petrov@gmail.com</emailaddress>
+          <phonenumber>066347676</phonenumber>
+          <servicetype>Заказ канцелярских принадлежностей</servicetype>
+          <description>Запрос на поставку канцелярии для работы школы.</description>
           <files>
-            <file>/uploads/5f9ff09e-8bdc-4149-8dcd-eb710d9ef462_4a19417a-a855-4211-a35e-add458e91a41_Пример индивид задания уп 04.docx</file>
-            <file>/uploads/def0e932-7fc2-478d-9a0d-678c298ecebd_Пример индивид задания уп 04.docx</file>
+            <file>/uploads/93f8d088-1881-4f87-816e-717001174881_Пример индивид задания уп 04.docx</file>
           </files>
-          <vhodregdate>2025-04-20 15:58:17</vhodregdate>
-          <status>New</status>
+          <vhodregdate>2025-04-21 09:22:51</vhodregdate>
+          <status>Новая</status>
         </referencedataorg>
       </content>
       <style>Signature {

@@ -1,0 +1,170 @@
+--
+-- PostgreSQL database dump
+--
+
+-- Dumped from database version 16.3
+-- Dumped by pg_dump version 16.3
+
+-- Started on 2025-04-22 00:15:25
+
+SET statement_timeout = 0;
+SET lock_timeout = 0;
+SET idle_in_transaction_session_timeout = 0;
+SET client_encoding = 'UTF8';
+SET standard_conforming_strings = on;
+SELECT pg_catalog.set_config('search_path', '', false);
+SET check_function_bodies = false;
+SET xmloption = content;
+SET client_min_messages = warning;
+SET row_security = off;
+
+SET default_tablespace = '';
+
+SET default_table_access_method = heap;
+
+--
+-- TOC entry 215 (class 1259 OID 35757)
+-- Name: __EFMigrationsHistory; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE public."__EFMigrationsHistory" (
+    "MigrationId" character varying(150) NOT NULL,
+    "ProductVersion" character varying(32) NOT NULL
+);
+
+
+ALTER TABLE public."__EFMigrationsHistory" OWNER TO postgres;
+
+--
+-- TOC entry 217 (class 1259 OID 35769)
+-- Name: applications; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE public.applications (
+    id uuid NOT NULL,
+    userid uuid,
+    fullname text,
+    email text,
+    phone text,
+    servicetype text,
+    description text,
+    status text DEFAULT 'New'::text,
+    createdat timestamp without time zone DEFAULT CURRENT_TIMESTAMP,
+    xmlpath text,
+    files text[]
+);
+
+
+ALTER TABLE public.applications OWNER TO postgres;
+
+--
+-- TOC entry 216 (class 1259 OID 35762)
+-- Name: users; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE public.users (
+    id uuid NOT NULL,
+    fullname text,
+    email text,
+    phone text,
+    address text,
+    placeofwork text,
+    login text,
+    passwordhash text
+);
+
+
+ALTER TABLE public.users OWNER TO postgres;
+
+--
+-- TOC entry 4849 (class 0 OID 35757)
+-- Dependencies: 215
+-- Data for Name: __EFMigrationsHistory; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+INSERT INTO public."__EFMigrationsHistory" VALUES ('20250421183706_initial', '9.0.4');
+
+
+--
+-- TOC entry 4851 (class 0 OID 35769)
+-- Dependencies: 217
+-- Data for Name: applications; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+INSERT INTO public.applications VALUES ('3ad7d3e1-6547-4a17-87e8-f3005d2c7e64', 'e54931ae-065a-415d-910d-c08d711b620d', 'Иван Иванов', 'varfikus@gmail.com', '12345678', 'услуга', '123', 'InProgress', '2025-04-20 16:03:08.012666', '/uploads/application_9c7b0ed4-b006-45c8-a063-a878c036e8f5.xml', '{}');
+INSERT INTO public.applications VALUES ('8a0de0f7-d940-477d-9f68-d60bfddb7b4c', 'e54931ae-065a-415d-910d-c08d711b620d', 'Варфоломеев Иван', 'varfikus@gmail.com', '032432432', 'услуга', 'описание', 'Completed', '2025-04-20 15:58:41.550861', '/uploads/application_6053a6d9-19d2-4c62-8499-f7144ec72984.xml', '{}');
+INSERT INTO public.applications VALUES ('c08d271d-b603-4058-a887-77d4c545ee1f', 'ce14ee1a-35b5-4645-8d61-a6840bd0a7f3', 'Петр Петров', 'petrov@gmail.com', '066347676', 'Получение справки о доходах', 'Предоставление официальной справки о доходах за указанный период на основании данных бухгалтерии.', 'New', '2025-04-21 09:21:45.771543', '/uploads/application_5eadc40b-22c8-467b-a43c-d7587901ff51.xml', '{"/uploads/c83dbcdb-3d1f-4639-a8fe-11a844003dd5_КТП по производственной практике пп04.docx",/uploads/6381dec8-b338-4e89-97c1-d80d8ee6c71d_photo_3_2025-04-14_12-01-14.jpg}');
+INSERT INTO public.applications VALUES ('7b6ef7d5-ed65-4bdf-a804-88d0f8cca2a4', 'ce14ee1a-35b5-4645-8d61-a6840bd0a7f3', 'Петр Петров', 'petrov@gmail.com', '066347676', 'Заказ канцелярских принадлежностей', 'Запрос на поставку канцелярии для работы школы.', 'New', '2025-04-21 09:22:51.989937', '/uploads/application_7a220951-8884-481e-811f-86ff68521288.xml', '{"/uploads/93f8d088-1881-4f87-816e-717001174881_Пример индивид задания уп 04.docx"}');
+INSERT INTO public.applications VALUES ('90e300bd-ed69-4eb2-ab4e-7768b7ef6c02', '9a481c8c-f6a2-4479-8ac5-e71f4d05ee9d', 'Сергей Сергеев', 'sergeev@gmail.com', '077904771', 'Заявка на техническую поддержку', 'Обращаюсь в ИТ-отдел по поводу неисправности оборудования.', 'New', '2025-04-21 09:25:21.090818', '/uploads/application_000fabe0-ec8b-4395-956c-979fd685b486.xml', '{}');
+
+
+--
+-- TOC entry 4850 (class 0 OID 35762)
+-- Dependencies: 216
+-- Data for Name: users; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+INSERT INTO public.users VALUES ('e54931ae-065a-415d-910d-c08d711b620d', 'Иван Иванов', 'varfikus@gmail.com', '12345678', 'Пушкина', 'нет', 'varfikus', '36961af8a71d5dcae68c7330892bf0d4a26d436f6b9a64581671ce9e72c5784e');
+INSERT INTO public.users VALUES ('ce14ee1a-35b5-4645-8d61-a6840bd0a7f3', 'Петр Петров', 'petrov@gmail.com', '066347676', 'Бендеры, ул. Пушкина, 15', 'Школа', 'petrov', 'cf13fe2cff28343e661d1ada6a36a7bc04a734ffa5647c8ea767c632032e930a');
+INSERT INTO public.users VALUES ('9a481c8c-f6a2-4479-8ac5-e71f4d05ee9d', 'Сергей Сергеев', 'sergeev@gmail.com', '77904771', 'Григориополь, ул. Мира, 20', 'Администрация города', 'sergeev', 'bc11fdaaa261bc9c2b7b9e6ad1f408be9621edff9e27b02c1c9aca79aec22c2a');
+INSERT INTO public.users VALUES ('cb906704-29d7-4abe-b1f2-a4f7219a3488', 'Евгений Евгеньевич', 'evgeniy@gmail.com', '77865345', 'Днестровск, ул. Ленина, 21', 'Автостанция', 'evgeniy', '1323016fdbac211c162204eec17bca9a96144b74730951fa58888dd235a8f0e1');
+
+
+--
+-- TOC entry 4698 (class 2606 OID 35761)
+-- Name: __EFMigrationsHistory PK___EFMigrationsHistory; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public."__EFMigrationsHistory"
+    ADD CONSTRAINT "PK___EFMigrationsHistory" PRIMARY KEY ("MigrationId");
+
+
+--
+-- TOC entry 4704 (class 2606 OID 35777)
+-- Name: applications applications_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.applications
+    ADD CONSTRAINT applications_pkey PRIMARY KEY (id);
+
+
+--
+-- TOC entry 4701 (class 2606 OID 35768)
+-- Name: users users_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.users
+    ADD CONSTRAINT users_pkey PRIMARY KEY (id);
+
+
+--
+-- TOC entry 4702 (class 1259 OID 35783)
+-- Name: IX_applications_userid; Type: INDEX; Schema: public; Owner: postgres
+--
+
+CREATE INDEX "IX_applications_userid" ON public.applications USING btree (userid);
+
+
+--
+-- TOC entry 4699 (class 1259 OID 35784)
+-- Name: users_login_key; Type: INDEX; Schema: public; Owner: postgres
+--
+
+CREATE UNIQUE INDEX users_login_key ON public.users USING btree (login);
+
+
+--
+-- TOC entry 4705 (class 2606 OID 35778)
+-- Name: applications applications_userid_fkey; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.applications
+    ADD CONSTRAINT applications_userid_fkey FOREIGN KEY (userid) REFERENCES public.users(id);
+
+
+-- Completed on 2025-04-22 00:15:26
+
+--
+-- PostgreSQL database dump complete
+--
+

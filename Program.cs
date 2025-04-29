@@ -7,6 +7,7 @@ using System.Text.Json.Serialization;
 using Microsoft.Extensions.Configuration;
 using Npgsql;
 using System.Reflection;
+using System.Data;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -67,6 +68,28 @@ app.UseStaticFiles();
 app.UseHttpsRedirection();
 app.UseCors();
 app.UseAuthorization();
+
+using (var scope = app.Services.CreateScope())
+{
+    var services = scope.ServiceProvider;
+    var dbContext = services.GetRequiredService<ApplicationCenterContext>();
+
+    dbContext.Database.Migrate();
+
+    var sqlFilePath = Path.Combine(app.Environment.ContentRootPath, "seed");
+    if (File.Exists(sqlFilePath))
+    {
+        var sql = File.ReadAllText(sqlFilePath);
+        var connection = dbContext.Database.GetDbConnection();
+
+        connection.Open();
+        using var command = connection.CreateCommand();
+        command.CommandText = sql;
+        command.CommandType = CommandType.Text;
+        command.ExecuteNonQuery();
+        connection.Close();
+    }
+}
 
 app.MapControllers();
 app.MapFallbackToFile("/admin", "admin/index.html");
